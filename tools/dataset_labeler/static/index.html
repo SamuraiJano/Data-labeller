@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skripsie Segmentation Labeler</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <strong>Skripsie Segmentation Labeler</strong>
+        <span id="saveState" class="save-state">No project</span>
+      </div>
+      <div class="top-actions">
+        <button id="validateBtn">Validate</button>
+        <button id="splitBtn">Split</button>
+        <button id="cocoBtn">COCO</button>
+        <button id="yoloBtn">YOLO + HSV</button>
+      </div>
+    </header>
+
+    <section id="projectPanel" class="project-panel">
+      <div class="project-form">
+        <label>Source image folder</label>
+        <div class="path-row">
+          <input id="sourceDir" type="text" placeholder="Folder containing citrus canker, healthy, melanose">
+          <button id="browseSourceBtn">Browse</button>
+        </div>
+        <label>Annotation project folder</label>
+        <div class="path-row">
+          <input id="projectDir" type="text" value="dataset/annotations">
+          <button id="browseProjectBtn">Browse</button>
+        </div>
+        <div class="project-actions">
+          <button id="createProjectBtn">Create / Import</button>
+          <button id="openProjectBtn">Open</button>
+        </div>
+      </div>
+    </section>
+
+    <main id="workspace" class="workspace hidden">
+      <aside class="sidebar left">
+        <div class="panel-head">
+          <span id="imageCounter">0 / 0</span>
+          <span id="imageStatus">unlabelled</span>
+        </div>
+        <div id="imageInfo" class="image-info"></div>
+        <div class="nav-row">
+          <button id="prevBtn">Prev</button>
+          <button id="nextBtn">Next</button>
+        </div>
+        <div id="imageList" class="image-list"></div>
+      </aside>
+
+      <section class="canvas-shell">
+        <div class="toolbar">
+          <button data-tool="select" class="tool active">Select</button>
+          <button data-tool="polygon" class="tool">Polygon</button>
+          <button data-tool="freehand" class="tool">Freehand</button>
+          <button data-tool="pan" class="tool">Pan</button>
+          <button id="fitBtn">Fit</button>
+          <button id="undoBtn">Undo</button>
+          <button id="redoBtn">Redo</button>
+          <button id="deleteBtn">Delete</button>
+          <label class="compact">Mask <input id="maskVisible" type="checkbox" checked></label>
+          <label class="compact">Opacity <input id="opacity" type="range" min="0" max="1" step="0.05" value="0.35"></label>
+        </div>
+        <canvas id="canvas"></canvas>
+      </section>
+
+      <aside class="sidebar right">
+        <div class="field">
+          <label>Class</label>
+          <select id="classSelect"></select>
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="statusSelect">
+            <option value="unlabelled">unlabelled</option>
+            <option value="labelled">labelled</option>
+            <option value="reviewed">reviewed</option>
+            <option value="excluded">excluded</option>
+          </select>
+        </div>
+        <label class="check-row"><input id="reviewedCheck" type="checkbox"> Reviewed</label>
+        <label class="check-row"><input id="excludedCheck" type="checkbox"> Excluded</label>
+        <textarea id="excludeReason" placeholder="Exclusion reason"></textarea>
+        <div class="panel-head">
+          <span>Instances</span>
+          <span id="instanceCount">0</span>
+        </div>
+        <div id="instanceList" class="instance-list"></div>
+        <div class="report-box">
+          <div id="summaryText"></div>
+          <pre id="operationOutput"></pre>
+        </div>
+      </aside>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
