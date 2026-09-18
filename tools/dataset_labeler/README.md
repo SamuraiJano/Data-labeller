@@ -1,5 +1,3 @@
-# Dataset Labeler Package
+# Dataset labeler package
 
-Implementation package for the local Skripsie whole-fruit segmentation labeler.
-
-Use the root `README.md` for startup, annotation, validation and export commands.
+Backend implementation for the Jano detection, lossless per-instance segmentation, and image-classification dataset app. It includes multi-video inspection, 500 ms full-frame extraction, portable source provenance, background import jobs, source-video-grouped train/validation/test splitting, and task-specific training exports. User-facing setup and workflow documentation lives in the repository root `README.md` and `docs/`.

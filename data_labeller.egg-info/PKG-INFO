@@ -1,0 +1,24 @@
+Metadata-Version: 2.4
+Name: data-labeller
+Version: 3.2.0
+Summary: Local image annotation, foreground extraction, and portable YOLO26/D-FINE dataset exporter.
+Requires-Python: >=3.12
+Requires-Dist: fastapi>=0.115
+Requires-Dist: uvicorn[standard]>=0.30
+Requires-Dist: pillow>=10.0
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: numpy>=1.24
+Requires-Dist: opencv-python>=4.8
+Provides-Extra: test
+Requires-Dist: pytest>=8.0; extra == "test"
+Requires-Dist: httpx>=0.27; extra == "test"
+Provides-Extra: detection
+Requires-Dist: torch>=2.7; extra == "detection"
+Requires-Dist: transformers<6,>=4.49; extra == "detection"
+Requires-Dist: truststore>=0.10; sys_platform == "win32" and extra == "detection"
+Provides-Extra: sam2
+Requires-Dist: torch>=2.7; extra == "sam2"
+Requires-Dist: sam-2 @ git+https://github.com/facebookresearch/sam2.git@2b90b9f5ceec907a1c18123530e92e794ad901a4 ; extra == "sam2"
+Provides-Extra: sam3
+Requires-Dist: torch>=2.7; extra == "sam3"
+Requires-Dist: sam3 @ git+https://github.com/facebookresearch/sam3.git@46957e47805eaa273f4aa7bbbd25a88bca9108ce ; extra == "sam3"

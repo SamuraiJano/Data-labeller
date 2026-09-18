@@ -3,10 +3,10 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "skripsie-segmentation-labeler"
-version = "0.1.0"
-description = "Local whole-fruit instance-segmentation labeler for citrus RGB/HSV YOLO training datasets."
-requires-python = ">=3.11"
+name = "data-labeller"
+version = "3.2.0"
+description = "Local image annotation, foreground extraction, and portable YOLO26/D-FINE dataset exporter."
+requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.30",
@@ -17,7 +17,20 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest>=8.0"]
+test = ["pytest>=8.0", "httpx>=0.27"]
+detection = [
+    "torch>=2.7",
+    "transformers>=4.49,<6",
+    "truststore>=0.10; sys_platform == 'win32'",
+]
+sam2 = [
+    "torch>=2.7",
+    "sam-2 @ git+https://github.com/facebookresearch/sam2.git@2b90b9f5ceec907a1c18123530e92e794ad901a4",
+]
+sam3 = [
+    "torch>=2.7",
+    "sam3 @ git+https://github.com/facebookresearch/sam3.git@46957e47805eaa273f4aa7bbbd25a88bca9108ce",
+]
 
 [tool.setuptools.packages.find]
 where = ["."]
